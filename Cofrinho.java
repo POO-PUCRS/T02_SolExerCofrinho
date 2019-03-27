@@ -40,11 +40,19 @@ public class Cofrinho{
 
     public int getQtdadeMoedasTipo(String moeda){
         int cont = 0;
+        
         for(String umaMoeda:moedas){
             if (umaMoeda.equals(moeda)){
                 cont++;
             }
         }
+        
+        /* Outra forma de escrever o mesmo laço de for
+        for(int i=0;i<moedas.size();i++){
+            if (moedas.get(i).equals(moeda)){
+                cont++;
+            }
+        }*/
         return cont;
     }
 
