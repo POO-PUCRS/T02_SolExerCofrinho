@@ -2,22 +2,25 @@ public class App{
     public static void main(String args[]){
         Cofrinho c = new Cofrinho();
 
-        c.insereMoeda("Real");
-        c.insereMoeda("50");
-        c.insereMoeda("25");
-        c.insereMoeda("Real");
-        c.insereMoeda("5");
-        c.insereMoeda("50");
-        c.insereMoeda("Real");
-        c.insereMoeda("10");
-        c.insereMoeda("Real");
-        c.insereMoeda("25");
+        c.insere(new Moeda(NomeMoeda.UmReal));
+        c.insere(new Moeda(NomeMoeda.Cinquenta));
+        c.insere(new Moeda(NomeMoeda.VinteCinco));
+        c.insere(new Moeda(NomeMoeda.UmReal));
+        c.insere(new Moeda(NomeMoeda.Cinco));
+        c.insere(new Moeda(NomeMoeda.Cinquenta));
+        c.insere(new Moeda(NomeMoeda.UmReal));
+        c.insere(new Moeda(NomeMoeda.Dez));
+        c.insere(new Moeda(NomeMoeda.Um));
+        c.insere(new Moeda(NomeMoeda.VinteCinco));
+        c.insere(new Moeda(NomeMoeda.UmReal));
 
         System.out.println("Quantidade de moedas inseridas: "+c.getQtdadeMoedas());
-        System.out.println("Quantidade de moedas de 1 real: "+c.getQtdadeMoedasTipo("Real"));
-        System.out.println("Quantidade de moedas de 50 centavos: "+c.getQtdadeMoedasTipo("50"));
-        System.out.println("Valor total: "+c.getValorTotal());
-        System.out.println("Moeda retirada: "+c.retiraMoeda());
-        System.out.println("Valor total: "+c.getValorTotal());
+        System.out.println("Quantidade de moedas de 1 real: "+c.getQtdadeMoedasTipo(NomeMoeda.UmReal));
+        System.out.println("Quantidade de moedas de 50 centavos: "+c.getQtdadeMoedasTipo(NomeMoeda.Cinquenta));
+        System.out.println("Valor total em centavos: "+c.getValorTotalCentavos());
+        System.out.println("Valor total em reais: "+c.getValorTotalReais());
+        System.out.println("Moeda retirada: "+c.retira());
+        System.out.println("Moeda retirada: "+c.retira());
+        System.out.println("Valor total em centavos: "+c.getValorTotalCentavos());
     }
 }

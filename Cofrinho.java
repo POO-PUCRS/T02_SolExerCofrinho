@@ -1,74 +1,59 @@
-import java.util.ArrayList;
-
 public class Cofrinho{
-    private ArrayList<String> moedas;
+    private final int MAXMOEDAS = 1000;
+    private Moeda moedas[];
+    private int qtdade;
 
     public Cofrinho(){
-        moedas = new ArrayList<>();
+        moedas = new Moeda[MAXMOEDAS];
+        qtdade = 0;
     }
 
-    private int valor(String moeda){
-        switch(moeda){
-            case "Real":
-            return 100;
-            case "50":
-            return 50;
-            case "25":
-            return 25;
-            case "10":
-            return 10;
-            case "5":
-            return 5;
-            default:
-            return -1;
-        }
-    }
-
-    public boolean insereMoeda(String moeda){
-        int val = valor(moeda);
-        if (val == -1){
+    public boolean insere(Moeda moeda){
+        if (qtdade == MAXMOEDAS){
             return false;
+        }
+        moedas[qtdade] = moeda;
+        qtdade++;
+        return true;
+    }
+
+    public Moeda retira(){
+        if (qtdade == 0){
+            return null;
         }else{
-            moedas.add(moeda);
-            return true;
+            qtdade--;
+            return moedas[qtdade];
         }
     }
+
 
     public int getQtdadeMoedas(){
-        return moedas.size();
+        return qtdade;
     }
 
-    public int getQtdadeMoedasTipo(String moeda){
-        int cont = 0;
-        
-        for(String umaMoeda:moedas){
-            if (umaMoeda.equals(moeda)){
+    public int getQtdadeMoedasTipo(NomeMoeda nomeMoeda){
+        int cont = 0;        
+        for(int i=0;i<qtdade;i++){
+            if (moedas[i].getNomeMoeda() == nomeMoeda){
                 cont++;
             }
         }
-        
-        /* Outra forma de escrever o mesmo laço de for
-        for(int i=0;i<moedas.size();i++){
-            if (moedas.get(i).equals(moeda)){
-                cont++;
-            }
-        }*/
         return cont;
     }
 
-    public double getValorTotal(){
-        int valorCentavos = 0;
-        for(String moeda:moedas){
-            valorCentavos += valor(moeda);
+    public int getValorTotalCentavos(){
+        int valorTotal = 0;        
+        for(int i=0;i<qtdade;i++){
+            valorTotal = valorTotal + moedas[i].getValorCentavos();
         }
-        return valorCentavos/100.0;
+        return valorTotal;
     }
 
-    public String retiraMoeda(){
-        if (moedas.size() == 0){
-            return null;
-        }else{
-            return moedas.remove(0);
+    public double getValorTotalReais(){
+        double valorTotal = 0;        
+        for(int i=0;i<qtdade;i++){
+            valorTotal = valorTotal + moedas[i].getValorReais();
         }
+        return valorTotal;
     }
 }
