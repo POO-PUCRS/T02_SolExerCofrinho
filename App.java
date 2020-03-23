@@ -23,7 +23,7 @@ public class App {
         System.out.println("Valor total em reais: "+c.getValorTotalReais());
         System.out.println("Moeda retirada: "+c.retira());
         System.out.println("Moeda retirada: "+c.retira());
-        System.out.println("Valor total em centavos: "+c.getValorTotalCentavos())
+        System.out.println("Valor total em centavos: "+c.getValorTotalCentavos());
 
     }
 }
